@@ -36,16 +36,16 @@ function DemoDateTimePicker() {
       <View>
         <Button onPress={showDatepicker} title="Show date picker!" />
       </View>
-      <View>
+      {/* <View>
         <Button onPress={showTimepicker} title="Show time picker!" />
-      </View>
+      </View> */}
       <DateTimePicker
-          testID="dateTimePicker"
-          timeZoneOffsetInMinutes={0}
+          // testID="dateTimePicker"
+          // timeZoneOffsetInMinutes={0}
           value={date}
-          mode={mode}
-          is24Hour={true}
-          display="default"
+          mode='date'
+          // is24Hour={true}
+          // display="default"
           onChange={onChange}
         />
     </View>

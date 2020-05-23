@@ -13,8 +13,9 @@ import {
   TouchableHighlight,
   Modal,
   SafeAreaView,
+  Platform,
 } from 'react-native';
-import DateTimePicker from '@react-native-community/datetimepicker';
+import DateTimePickerModal from 'react-native-modal-datetime-picker'
 
 const widthScreen = Dimensions.get('window').width;
 const heightScreen = Dimensions.get('window').height;
@@ -25,9 +26,25 @@ function TimePicker() {
   const [timeZoneOffSetInHours, setTimeZone] = useState(
     (-1 * new Date().getTimezoneOffset()) / 60,
   );
+  const [mode, setMode] = useState('time');
+  const [show, setShow] = useState(false);
 
-  const pickTime = () => {
-    showModal ? setShowModal(false) : setShowModal(true);
+  const showDatePicker = () => {
+    setShow(true);
+  };
+
+  const hideDatePicker = () => {
+    setShow(false);
+  };
+
+  const showDate = () => {
+    setMode('date')
+    showDatePicker()
+  };
+
+  const showTime = () => {
+    setMode('time')
+    showDatePicker()
   };
 
   const getTime = date => {
@@ -65,19 +82,10 @@ function TimePicker() {
     );
   };
 
-  const closeModel = () => {
-    setShowModal(false);
-  };
-
-  const onDateChange = (event, selectedDate) => {
-    const currentDate = selectedDate || date;
+  const onDateChange = (selectedDate) => {
+    const currentDate = selectedDate
     setDate(currentDate);
-    console.log(currentDate);
-  };
-
-  const setTime = () => {
-    getTime(date);
-    closeModel();
+    hideDatePicker()
   };
 
   return (
@@ -85,49 +93,22 @@ function TimePicker() {
       <StatusBar barStyle="dark-content" />
       <View style={styles.container}>
         <Text style={styles.date}>{getTime(date)}</Text>
-        <TouchableHighlight underlayColor="#f3f3f3" onPress={pickTime}>
-          <Text style={styles.buttonText}>Change Time</Text>
+        <TouchableHighlight underlayColor="#f3f3f3" onPress={showDate}>
+          <Text style={styles.buttonText}>Chọn ngày</Text>
         </TouchableHighlight>
-        <Modal visible={showModal}>
-          <SafeAreaView>
-            <View style={styles.modalContainer}>
-              <View style={styles.modelNav}>
-                <TouchableHighlight underlayColor="#fff" onPress={closeModel}>
-                  <Text
-                    style={[styles.buttonText, {width: 80, textAlign: 'left'}]}>
-                    Cancel
-                  </Text>
-                </TouchableHighlight>
-                <Text style={styles.navTitle}>Choose a time</Text>
-                <TouchableHighlight underlayColor="#fff" onPress={setTime}>
-                  <Text
-                    style={[
-                      styles.buttonText,
-                      {width: 80, textAlign: 'right'},
-                    ]}>
-                    Set
-                  </Text>
-                </TouchableHighlight>
-              </View>
-              <View style={styles.modalContent}>
-                <Text style={styles.selectText}>Chọn ngày:</Text>
-                <DateTimePicker
-                  value={date}
-                  mode="date"
-                  display='default'
-                  onChange={onDateChange}
-                />
-                <View style={{width: widthScreen, height: 50}} />
-                <Text style={styles.selectText}>Chọn giờ:</Text>
-                <DateTimePicker
-                  value={date}
-                  mode="time"
-                  onChange={onDateChange}
-                />
-              </View>
-            </View>
-          </SafeAreaView>
-        </Modal>
+        <TouchableHighlight underlayColor="#f3f3f3" onPress={showTime}>
+          <Text style={styles.buttonText}>Chọn giờ</Text>
+        </TouchableHighlight>
+        <DateTimePickerModal
+        isVisible={show}
+        confirmTextIOS='Đồng ý'
+        cancelTextIOS='Huỷ'
+        date={date}
+        mode={mode}
+        headerTextIOS={mode == 'date' ? 'Chọn ngày' : 'Chọn giờ'}
+        onConfirm={onDateChange}
+        onCancel={hideDatePicker}
+      />
       </View>
     </>
   );
@@ -147,32 +128,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     padding: 10,
   },
-  modalContainer: {
-    backgroundColor: '#f1f1f1',
-    flex: 1,
-  },
-  modelNav: {
-    height: 44,
-    width: widthScreen,
-    backgroundColor: '#fff',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  navTitle: {
-    fontWeight: '500',
-    color: '#222',
-    fontSize: 18,
-  },
-  modalContent: {
-    width: widthScreen,
-    height: heightScreen - 120,
-    justifyContent: 'flex-start',
-    paddingTop: 50,
-  },
-  selectText: {
-    marginLeft: 20,
-    fontSize: 24,
-  },
 });
+
 export default TimePicker;

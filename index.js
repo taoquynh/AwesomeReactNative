@@ -13,5 +13,7 @@ import Rich from './src/routes/Rich';
 import TimePicker from './src/routes/TimePicker';
 import DemoDateTimePicker from './src/routes/DemoDateTimePicker';
 import Bingo from './src/routes/Bingo';
+import SomeScene from './src/routes/TestPicker';
+import PickerAndroid from './src/routes/PickerForAndroid'
 
-AppRegistry.registerComponent(appName, () => TimePicker);
+AppRegistry.registerComponent(appName, () => PickerAndroid);

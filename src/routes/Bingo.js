@@ -14,6 +14,7 @@ import {
   Animated,
 } from 'react-native';
 import {Picker} from '@react-native-community/picker';
+import { WheelPicker, TimePicker, DatePicker } from 'react-native-wheel-picker-android';
 
 function randomArray() {
   let data1 = [];
@@ -22,11 +23,11 @@ function randomArray() {
   const arrays = ['🌕', '🌖', '🌗', '🌘', '🌑', '🌒', '🌓', '🌔', '💥', '🎁'];
 
   for (let i = 0; i < 100; i++) {
-    let item1 = arrays[Math.floor(Math.random() * 100) % 10];
+    let item1 = arrays[Math.floor(Math.random() * 9)];
     data1.push(item1);
-    let item2 = arrays[Math.floor(Math.random() * 100) % 10];
+    let item2 = arrays[Math.floor(Math.random() * 9)];
     data2.push(item2);
-    let item3 = arrays[Math.floor(Math.random() * 100) % 10];
+    let item3 = arrays[Math.floor(Math.random() * 9)];
     data3.push(item3);
   }
 
@@ -187,9 +188,9 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   picker: {
-    width: '33,33333333%',
+    width: '33.33333333%',
     height: 100,
-  }, 
+  },
   topView: {
     flex: 3 / 4,
     flexDirection: 'row',

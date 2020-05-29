@@ -14,7 +14,6 @@ import {
   Animated,
 } from 'react-native';
 import {Picker} from '@react-native-community/picker';
-import { WheelPicker, TimePicker, DatePicker } from 'react-native-wheel-picker-android';
 
 function randomArray() {
   let data1 = [];

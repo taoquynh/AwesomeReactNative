@@ -4,8 +4,6 @@
 
 import {
   WheelPicker,
-  TimePicker,
-  DatePicker,
 } from 'react-native-wheel-picker-android';
 import React, {useState} from 'react';
 import {
@@ -19,7 +17,6 @@ import {
   Animated,
   TouchableOpacity,
 } from 'react-native';
-import {Picker} from '@react-native-community/picker';
 
 function randomArray() {
   let data1 = [];

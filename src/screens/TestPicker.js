@@ -2,7 +2,7 @@
  * Test Picker trên Android
  */
 
-import { WheelPicker, TimePicker, DatePicker } from 'react-native-wheel-picker-android'
+import { WheelPicker, TimePicker, } from 'react-native-wheel-picker-android'
 import React, { Component } from 'react';
 import {
   AppRegistry,

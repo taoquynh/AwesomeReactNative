@@ -6,26 +6,14 @@ import React, {useState} from 'react';
 import {
   View,
   StatusBar,
-  Image,
   StyleSheet,
   Text,
-  Dimensions,
   TouchableHighlight,
-  Modal,
-  SafeAreaView,
-  Platform,
 } from 'react-native';
-import DateTimePickerModal from 'react-native-modal-datetime-picker'
-
-const widthScreen = Dimensions.get('window').width;
-const heightScreen = Dimensions.get('window').height;
+import DateTimePickerModal from 'react-native-modal-datetime-picker';
 
 function TimePicker() {
-  const [showModal, setShowModal] = useState(false);
   const [date, setDate] = useState(new Date());
-  const [timeZoneOffSetInHours, setTimeZone] = useState(
-    (-1 * new Date().getTimezoneOffset()) / 60,
-  );
   const [mode, setMode] = useState('time');
   const [show, setShow] = useState(false);
 
@@ -38,16 +26,16 @@ function TimePicker() {
   };
 
   const showDate = () => {
-    setMode('date')
-    showDatePicker()
+    setMode('date');
+    showDatePicker();
   };
 
   const showTime = () => {
-    setMode('time')
-    showDatePicker()
+    setMode('time');
+    showDatePicker();
   };
 
-  const getTime = date => {
+  const getTime = dateX => {
     const monthNames = [
       'January',
       'February',
@@ -63,11 +51,11 @@ function TimePicker() {
       'December',
     ];
 
-    const day = date.getDate(),
-      month = date.getMonth(),
-      year = date.getFullYear(),
-      hour = date.getHours(),
-      minute = date.getMinutes();
+    const day = dateX.getDate(),
+      month = dateX.getMonth(),
+      year = dateX.getFullYear(),
+      hour = dateX.getHours(),
+      minute = dateX.getMinutes();
 
     return (
       day +
@@ -82,10 +70,10 @@ function TimePicker() {
     );
   };
 
-  const onDateChange = (selectedDate) => {
-    const currentDate = selectedDate
+  const onDateChange = selectedDate => {
+    const currentDate = selectedDate;
     setDate(currentDate);
-    hideDatePicker()
+    hideDatePicker();
   };
 
   return (
@@ -100,15 +88,15 @@ function TimePicker() {
           <Text style={styles.buttonText}>Chọn giờ</Text>
         </TouchableHighlight>
         <DateTimePickerModal
-        isVisible={show}
-        confirmTextIOS='Đồng ý'
-        cancelTextIOS='Huỷ'
-        date={date}
-        mode={mode}
-        headerTextIOS={mode == 'date' ? 'Chọn ngày' : 'Chọn giờ'}
-        onConfirm={onDateChange}
-        onCancel={hideDatePicker}
-      />
+          isVisible={show}
+          confirmTextIOS="Đồng ý"
+          cancelTextIOS="Huỷ"
+          date={date}
+          mode={mode}
+          headerTextIOS={mode === 'date' ? 'Chọn ngày' : 'Chọn giờ'}
+          onConfirm={onDateChange}
+          onCancel={hideDatePicker}
+        />
       </View>
     </>
   );

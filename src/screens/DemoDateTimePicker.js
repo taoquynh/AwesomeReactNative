@@ -8,14 +8,14 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 
 function DemoDateTimePicker() {
   const [date, setDate] = useState(new Date(1598051730000));
-  const [mode, setMode] = useState('date');
-  const [show, setShow] = useState(false);
+  const [setMode] = useState('date');
+  const [setShow] = useState(false);
 
   const onChange = (event, selectedDate) => {
     const currentDate = selectedDate || date;
     setShow(Platform.OS === 'ios');
     setDate(currentDate);
-    console.log(currentDate)
+    console.log(currentDate);
   };
 
   const showMode = currentMode => {
@@ -27,9 +27,9 @@ function DemoDateTimePicker() {
     showMode('date');
   };
 
-  const showTimepicker = () => {
-    showMode('time');
-  };
+  // const showTimepicker = () => {
+  //   showMode('time');
+  // };
 
   return (
     <View>
@@ -40,14 +40,14 @@ function DemoDateTimePicker() {
         <Button onPress={showTimepicker} title="Show time picker!" />
       </View> */}
       <DateTimePicker
-          // testID="dateTimePicker"
-          // timeZoneOffsetInMinutes={0}
-          value={date}
-          mode='date'
-          // is24Hour={true}
-          // display="default"
-          onChange={onChange}
-        />
+        // testID="dateTimePicker"
+        // timeZoneOffsetInMinutes={0}
+        value={date}
+        mode="date"
+        // is24Hour={true}
+        // display="default"
+        onChange={onChange}
+      />
     </View>
   );
 }

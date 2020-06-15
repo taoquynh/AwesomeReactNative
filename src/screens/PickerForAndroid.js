@@ -2,16 +2,12 @@
  * Test Picker trên Android
  */
 
-import {
-  WheelPicker,
-} from 'react-native-wheel-picker-android';
+import {WheelPicker} from 'react-native-wheel-picker-android';
 import React, {useState} from 'react';
 import {
-  AppRegistry,
   StyleSheet,
   Text,
   View,
-  Button,
   StatusBar,
   ImageBackground,
   Animated,
@@ -40,6 +36,7 @@ function PickerAndroid() {
   const [data1, data2, data3] = randomArray();
   const [translate] = useState(new Animated.Value(0));
 
+  // eslint-disable-next-line no-unused-vars
   const animteText = () => {
     Animated.sequence([
       Animated.timing(translate, {
@@ -74,7 +71,7 @@ function PickerAndroid() {
           source={require('../assets/Hyperspace.jpg')}>
           <View style={styles.topView}>
             <WheelPicker
-            style={styles.picker}
+              style={styles.picker}
               selectedItem={null}
               data={data1}
               onItemSelected={null}
@@ -83,7 +80,7 @@ function PickerAndroid() {
               isCyclic={true}
             />
             <WheelPicker
-            style={styles.picker}
+              style={styles.picker}
               selectedItem={null}
               data={data2}
               onItemSelected={null}
@@ -92,14 +89,14 @@ function PickerAndroid() {
               isCyclic={true}
             />
             <WheelPicker
-            style={styles.picker}
-            selectedItem={null}
-            data={data3}
-            onItemSelected={null}
-            itemTextSize={30}
-            selectedItemTextSize={30}
-            isCyclic={true}
-          />
+              style={styles.picker}
+              selectedItem={null}
+              data={data3}
+              onItemSelected={null}
+              itemTextSize={30}
+              selectedItemTextSize={30}
+              isCyclic={true}
+            />
           </View>
           <View style={styles.bottomView}>
             <TouchableOpacity style={[styles.button]} onPress={null}>

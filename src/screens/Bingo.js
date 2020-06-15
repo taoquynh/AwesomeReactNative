@@ -1,13 +1,13 @@
+/* eslint-disable react-native/no-inline-styles */
 /**
  * Bingo
  */
 
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
   StyleSheet,
-  Image,
   StatusBar,
   TouchableOpacity,
   ImageBackground,
@@ -41,8 +41,6 @@ function Bingo() {
   const [resultLabel, setResultLabel] = useState('');
   const [amazingFlag, setAmazingFlag] = useState(false);
   const [translate] = useState(new Animated.Value(0));
-  const [x, setX] = useState(0);
-  const trucX = new Animated.Value(0);
   console.log('translate', translate);
 
   let listItem1 = data1.map((item, index) => (
@@ -79,9 +77,9 @@ function Bingo() {
     setChoosen3(data3[index3]);
 
     if (
-      data1[index1] == data2[index2] &&
-      data3[index3] == data1[index1] &&
-      data1[index1] != ''
+      data1[index1] === data2[index2] &&
+      data3[index3] === data1[index1] &&
+      data1[index1] !== ''
     ) {
       console.log('Bingo');
       setResultLabel('Bingo!!!');
@@ -93,6 +91,7 @@ function Bingo() {
     animteText();
   };
 
+  // eslint-disable-next-line no-unused-vars
   const win = () => {
     setAmazingFlag(!amazingFlag);
     console.log(amazingFlag);

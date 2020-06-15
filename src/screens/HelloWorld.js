@@ -1,23 +1,22 @@
+/* eslint-disable react-native/no-inline-styles */
 /**
  * Hello World
  */
 
 import React from 'react';
-import { View, Text } from 'react-native';
+import {View, Text} from 'react-native';
 
 function HelloWorldApp() {
-    return (
-        <View
-        style={{
-            flex: 1,
-            alignItems: "center",
-            justifyContent: "center"
-        }}>
-            <Text>
-                Hello, World!
-            </Text>
-        </View>
-    )
+  return (
+    <View
+      style={{
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}>
+      <Text>Hello, World!</Text>
+    </View>
+  );
 }
 
 export default HelloWorldApp;

@@ -17,4 +17,4 @@ import Bingo from './src/screens/5_Bingo';
 import SomeScene from './src/screens/TestPicker';
 import ShowSlide from './src/screens/6_ShowSlide';
 
-AppRegistry.registerComponent(appName, () => ShowSlide);
+AppRegistry.registerComponent(appName, () => TheLight);

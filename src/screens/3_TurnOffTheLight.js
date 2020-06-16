@@ -26,6 +26,7 @@ function TheLight() {
         <View style={styles.topView}>
           <Image
             style={styles.styleImage}
+            resizeMode="contain"
             source={
               isEnabled
                 ? require('../assets/BulbOn.jpg')
